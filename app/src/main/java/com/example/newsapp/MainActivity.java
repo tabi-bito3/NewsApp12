@@ -12,9 +12,9 @@ import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
 
-    private Toolbar mainToolbar;
+public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     @Override
@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mainToolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
 
         setSupportActionBar(mainToolbar);
         try {
-            getSupportActionBar().setTitle("Campus News");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Campus News");
         }
-        catch (Exception ex){
-
+        catch (Exception ex) {
+            ex.printStackTrace();
         }
 
 
@@ -57,14 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_logout_btn:
-                logOut();
-                return true;
-
-                default:
-                    return false;
+        if (item.getItemId() == R.id.action_logout_btn) {
+            logOut();
+            return true;
         }
+        return false;
     }
 
     private void sendToLogin() {
