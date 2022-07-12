@@ -11,4 +11,10 @@
     <string name="action_search_text">Search</string>
     <string name="action_settings_text">Account Settings</string>
     <string name="action_logout">Logout</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="newsapp">NewsApp</string>
+    <string name="explore_trending_news_on_campus">Explore trending news on Campus!</string>
+    <string name="let_s_get_started">Let\'s get started!</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="todo">TODO</string>
 </resources>
