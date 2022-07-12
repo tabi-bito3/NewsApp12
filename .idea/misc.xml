@@ -3,15 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/google.xml" value="0.124" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/ic_news_logo.xml" value="0.1" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/drawable/news_logo.xml" value="0.1105" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/font/.xml" value="0.28" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/font/montserrat_subrayada_bold.xml" value="0.28" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/Hasita Bommakanti/AndroidStudioProjects/NewsApp12/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/Hasita Bommakanti/AndroidStudioProjects/NewsApp12/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Hasita Bommakanti/AndroidStudioProjects/NewsApp12/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/Users/Hasita Bommakanti/AndroidStudioProjects/NewsApp12/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_profile.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/bhavy/AndroidStudioProjects/NewsApp/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
