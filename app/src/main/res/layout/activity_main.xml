@@ -29,14 +29,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_post_btn"
-        android:contentDescription="@string/addpost_btn"
+        android:contentDescription="@string/app_name"
         android:layout_width="71dp"
         android:layout_height="65dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/black"
         android:clickable="true"
-        android:foreground="@drawable/ic_baseline_add_24"
         android:foregroundTint="@color/primary"
         android:tint="@color/primary"
         app:backgroundTint="@color/colorPrimaryDark"
