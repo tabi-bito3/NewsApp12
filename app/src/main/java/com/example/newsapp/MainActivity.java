@@ -89,10 +89,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-
-
-
-
     private void sendToLogin() {
         Intent intent= new Intent(MainActivity.this,RegisterActivity.class);
         startActivity(intent);

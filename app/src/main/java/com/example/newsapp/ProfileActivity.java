@@ -3,6 +3,7 @@ package com.example.newsapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,14 +51,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(fb_User != null)
         {
-
-
                     Glide.with(ProfileActivity.this)
                     .load(fb_User.getPhotoUrl())
-                    .into(iv_image);
+                    .into(iv_image); //hello hasita find me
 
-            tv_name.setText(fb_User.getDisplayName());
-            tv_emailID.setText(fb_User.getEmail());
+            tv_name.setText("Hello "+fb_User.getDisplayName());
+            tv_emailID.setText("Email ID: "+fb_User.getEmail());
         }
 
         gsc= GoogleSignIn.getClient(ProfileActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
@@ -75,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Logged out succesfully",Toast.LENGTH_SHORT).show();
 
                             finish();
+                            startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
                         }
                     }
                 });
