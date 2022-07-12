@@ -36,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        //commit test
 
         iv_image=findViewById(R.id.iv_image);
         tv_name=findViewById(R.id.tv_name);
