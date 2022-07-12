@@ -74,8 +74,24 @@ public class MainActivity extends AppCompatActivity {
             logOut();
             return true;
         }
+
+        else if(item.getItemId()==R.id.action_settings_btn){
+            sendToProfile();
+            return true;
+        }
+
         return false;
     }
+
+    private void sendToProfile(){
+        Intent intent= new Intent(MainActivity.this,ProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+
+
 
     private void sendToLogin() {
         Intent intent= new Intent(MainActivity.this,RegisterActivity.class);

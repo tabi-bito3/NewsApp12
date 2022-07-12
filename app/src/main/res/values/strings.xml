@@ -9,7 +9,7 @@
     <string name="welcome_to_newsapp">Welcome to NewsApp</string>
     <string name="loginlogo">loginlogo</string>
     <string name="action_search_text">Search</string>
-    <string name="action_settings_text">Account Settings</string>
+    <string name="action_settings_text">User Profile</string>
     <string name="action_logout">Logout</string>
     <string name="create_an_account">Create an Account</string>
     <string name="newsapp">NewsApp</string>

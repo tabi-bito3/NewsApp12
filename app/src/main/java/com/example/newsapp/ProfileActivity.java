@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -48,7 +49,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(fb_User != null)
         {
-            Glide.with(ProfileActivity.this)
+
+
+                    Glide.with(ProfileActivity.this)
                     .load(fb_User.getPhotoUrl())
                     .into(iv_image);
 
