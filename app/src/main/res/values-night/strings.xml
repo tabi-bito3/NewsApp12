@@ -2,4 +2,9 @@
 <resources>
     <string name="bottom_home">Home</string>
     <string name="add_btn">Create post</string>
+    <string name="username">UserName</string>
+    <string name="post_date">Post date</string>
+    <string name="heading">Heading</string>
+    <string name="post_description">post description</string>
+    <string name="profile_image">profile image</string>
 </resources>

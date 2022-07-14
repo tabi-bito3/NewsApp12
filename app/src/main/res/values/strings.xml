@@ -24,4 +24,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_btn">Create post</string>
+    <string name="username">UserName</string>
+    <string name="post_date">Post date</string>
+    <string name="heading">Heading</string>
+    <string name="post_description">post description</string>
+    <string name="profile_image">profile image</string>
 </resources>
