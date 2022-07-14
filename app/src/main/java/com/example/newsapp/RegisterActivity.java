@@ -58,19 +58,23 @@ public class RegisterActivity extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser user = mAuth.getCurrentUser();
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (user != null) {
             // User is signed in
             navigateToMainActivity();
         }
     }
 
+    private void signIn() {
+        Intent intent = gsc.getSignInIntent();
+        startActivityForResult(intent, 100);
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1000) {
+        if(requestCode==100) {
             Task <GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
 
             if(task.isSuccessful()) {
@@ -104,7 +108,12 @@ public class RegisterActivity extends AppCompatActivity {
                                         else
                                         {
                                             // When task is unsuccessful
-                                            Toast.makeText(getApplicationContext(), "Authentication Failed :"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            try {
+                                                Toast.makeText(getApplicationContext(), "Authentication Failed :"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                            catch (Exception e){
+                                                e.getStackTrace();
+                                            }
                                         }
                                     }
                                 });
@@ -114,13 +123,10 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
+            else{
+                Toast.makeText(getApplicationContext(), "Authentication Failed :"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
-    }
-
-    private void signIn() {
-        Intent intent = gsc.getSignInIntent();
-        startActivityForResult(intent, 1000);
-
     }
 
     private void navigateToMainActivity() {
