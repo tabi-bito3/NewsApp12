@@ -59,8 +59,8 @@ public class CropUtils {
             //final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CropImageView, 0, 0);
             mGuidelinesMode = 1;
             mFixAspectRatio = false;
-            mAspectRatioX = 1;
-            mAspectRatioY = 1;
+            mAspectRatioX = 16;
+            mAspectRatioY = 9;
 
             final android.content.res.Resources resources = context.getResources();
 
