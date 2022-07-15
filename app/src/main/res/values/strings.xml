@@ -29,4 +29,8 @@
     <string name="heading">Heading</string>
     <string name="post_description">post description</string>
     <string name="profile_image">profile image</string>
+    <string name="post_desc_hint">Add description...</string>
+    <string name="post_button_hint">Post</string>
+    <string name="imagespeak">image</string>
+    <string name="posttitle">Add Title...</string>
 </resources>
