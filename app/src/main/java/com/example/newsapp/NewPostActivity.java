@@ -85,8 +85,7 @@ public class NewPostActivity extends AppCompatActivity {
         imgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectImage();
-                // mGetContent.launch("image/*");
+                mGetContent.launch("image/*");
             }
         });
 
@@ -150,32 +149,6 @@ public class NewPostActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void selectImage() {
-        // Defining Implicit Intent to mobile gallery
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(
-                Intent.createChooser(intent,"Select Image from here..."), SELECT_PICTURE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==SELECT_PICTURE && resultCode==RESULT_OK && data != null && data.getData() != null){
-            postImageUri = data.getData();
-            try {
-                Bitmap showBitmap = getBitmapFromUri(data.getData());
-                saveBitmapToCache(showBitmap);
-                imgView.setImageBitmap(showBitmap);
-            } catch (IOException e){
-                Log.e("tag", e.toString());
-            }
-
-        }
     }
 
     ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
