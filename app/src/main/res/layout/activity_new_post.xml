@@ -18,13 +18,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/post_desc"
+        android:id="@+id/post_desc_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
@@ -32,7 +31,6 @@
         android:inputType="textMultiLine"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/post_new_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,14 +41,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:text="@string/post_button_hint"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_desc" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/new_post_image"
@@ -63,7 +62,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_post_toolbar"
-        app:srcCompat="@drawable/addimage_final" />
+        app:srcCompat="@drawable/addimage_final"
+        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/post_title_text"
@@ -77,11 +77,35 @@
         android:hint="@string/posttitle"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/post_desc"
+        app:layout_constraintBottom_toTopOf="@+id/post_desc_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_post_image"
         android:autofillHints="" />
+
+    <ImageButton
+        android:id="@+id/img_edit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/new_post_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/new_post_image"
+        tools:ignore="ImageContrastCheck" />
+
+    <ProgressBar
+        android:id="@+id/progressPost"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_post_toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

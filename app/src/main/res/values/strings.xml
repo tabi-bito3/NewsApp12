@@ -33,4 +33,6 @@
     <string name="post_button_hint">Post</string>
     <string name="imagespeak">image</string>
     <string name="posttitle">Add Title...</string>
+    <string name="like">Like</string>
+    <string name="dislike">Dislike</string>
 </resources>
