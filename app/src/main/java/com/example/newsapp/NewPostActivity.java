@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +38,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
@@ -102,7 +104,16 @@ public class NewPostActivity extends AppCompatActivity {
                     String randomName = FieldValue.serverTimestamp().toString();
 
                     StorageReference filePath = storageReference.child("post_images/"+ UUID.randomUUID().toString());
-                    filePath.putFile(postImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    Bitmap bmp = null;
+                    try {
+                        bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), postImageUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ByteArrayOutputStream baOs = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.JPEG, 25, baOs);
+                    byte[] data = baOs.toByteArray();
+                    filePath.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Task<Uri> fireBaseUri = taskSnapshot.getStorage().getDownloadUrl();
