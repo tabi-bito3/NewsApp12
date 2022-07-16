@@ -195,7 +195,7 @@ public class NewPostActivity extends AppCompatActivity {
         String filename = "final_image.jpg";
         File cacheFile = new File(getApplicationContext().getCacheDir(), filename);
         OutputStream out = new FileOutputStream(cacheFile);
-        showBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+        showBitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
         out.flush();
         out.close();
     }
