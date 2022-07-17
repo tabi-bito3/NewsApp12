@@ -122,8 +122,9 @@ public class NewPostActivity extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String downloadUrl = uri.toString();
 
+
                                     Map<String, Object> postMap = new HashMap<>();
-                                    postMap.put("image_url", downloadUrl);
+                                    postMap.put("thumb_img", downloadUrl);
                                     postMap.put("title", title);
                                     postMap.put("desc", desc);
                                     postMap.put("user_id", current_user_id);
