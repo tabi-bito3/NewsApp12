@@ -12,7 +12,6 @@
         android:title="@string/action_settings_text" />
     <item
         android:id="@+id/action_logout_btn"
-        android:icon="@drawable/action_logout"
-        android:title="@string/action_logout"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/logout_icon"
+        android:title="@string/action_logout" />
 </menu>
