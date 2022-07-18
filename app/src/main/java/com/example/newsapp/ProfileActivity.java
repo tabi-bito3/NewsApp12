@@ -1,7 +1,9 @@
 package com.example.newsapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +33,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button bt_logout;
     FirebaseAuth fb_Auth;
     GoogleSignInClient gsc;
+    TextView ph;
+
 
 
     @Override
@@ -44,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         tv_emailID=findViewById(R.id.tv_emailID);
         ed_userName=findViewById(R.id.ed_userName);
         bt_logout=findViewById(R.id.bt_logout);
+        ph=findViewById(R.id.profile_heading);
 
         fb_Auth=FirebaseAuth.getInstance();
 
