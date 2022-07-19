@@ -36,4 +36,5 @@
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
     <string name="save">Save</string>
+    <string name="_0">0</string>
 </resources>

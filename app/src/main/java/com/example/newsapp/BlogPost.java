@@ -2,7 +2,7 @@ package com.example.newsapp;
 import java.util.Date;
 
 
-public class BlogPost {
+public class BlogPost extends BlogPostId{
     public String user_id,thumb_img,desc, title;
     public Date timestamp;
     public BlogPost(){};

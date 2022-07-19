@@ -111,7 +111,7 @@ public class SetupActivity extends AppCompatActivity {
                                 hashMap.put("profile_img", img);
                                 hashMap.put("user_id", user_id);
 
-                                firebaseFirestore.collection("Users").add(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                                firebaseFirestore.collection("Users").document(mUser.getUid()).set(hashMap).addOnSuccessListener(new OnSuccessListener() {
                                     @Override
                                     public void onSuccess(Object o) {
                                         Intent intent = new Intent(SetupActivity.this, MainActivity.class);
