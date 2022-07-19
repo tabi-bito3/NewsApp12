@@ -42,6 +42,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
     public Context context;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
+    private int count = 0;
 
     public BlogRecyclerAdapter(List<BlogPost> blog_list){
         this.blog_list=blog_list;
@@ -101,37 +102,65 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         holder.setTime(ago);
 
-        // Get Likes Count
+        // Get Likes & Dislikes Count
         firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
+
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(!value.isEmpty()){
-                    int count = value.size();
+                    count ++;
                     holder.setLikeCnt(count);
                 }
                 else{
-                    holder.setLikeCnt(0);
+                    count += 0;
+                    holder.setLikeCnt(count);
                 }
             }
         });
 
-        // Get likes
+        firebaseFirestore.collection("Posts/" + blogPostId +"/Dislikes").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(!value.isEmpty()){
+                    count --;
+                    holder.setLikeCnt(count);
+                }
+                else{
+                    count -= 0;
+                    holder.setLikeCnt(count);
+                }
+            }
+        });
 
-        /*
+        //holder.setLikeCnt(count);
+
+        // Get likes
         firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").document(current_user_id).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(value.exists()){
-                    //holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up_red));
-                    holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down));
+                    holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up_red));
+                    //holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down));
                 }
                 else{
-                    //holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up));
-                    holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down_blue));
+                    holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up));
+                    //holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down_blue));
                 }
             }
         });
-        */
+
+        // Get dislikes
+        firebaseFirestore.collection("Posts/" + blogPostId +"/Dislikes").document(current_user_id).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(value.exists()){
+                    holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down_blue));
+                }
+                else{
+                    holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down));
+                }
+            }
+        });
 
         // Likes Feature
 
@@ -147,12 +176,12 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                             likesMap.put("timestamp", FieldValue.serverTimestamp());
 
                             firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").document(current_user_id).set(likesMap);
-                            holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up_red));
+                            // holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up_red));
 
                         }
                         else{
                             firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").document(current_user_id).delete();
-                            holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up));
+                            // holder.likeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_up));
                         }
                     }
                 });
@@ -161,24 +190,25 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
+        // Dislikes feature
+
         holder.dislikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").document(current_user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                firebaseFirestore.collection("Posts/" + blogPostId +"/Dislikes").document(current_user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(!task.getResult().exists()){
-
-                            firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").document(current_user_id).delete();
-                            holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down_blue));
+                            Map<String, Object> dislikesMap =new HashMap<>();
+                            dislikesMap.put("timestamp", FieldValue.serverTimestamp());
+                            firebaseFirestore.collection("Posts/" + blogPostId +"/Dislikes").document(current_user_id).set(dislikesMap);
+                            // holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down_blue));
 
                         }
                         else{
-                            Map<String, Object> dislikesMap =new HashMap<>();
-                            dislikesMap.put("timestamp", FieldValue.serverTimestamp());
-                            firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").document(current_user_id).set(dislikesMap);
-                            holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down));
+                            firebaseFirestore.collection("Posts/" + blogPostId +"/Dislikes").document(current_user_id).delete();
+                            // holder.dislikeBtn.setImageDrawable(context.getDrawable(R.drawable.thumb_down));
                         }
                     }
                 });
