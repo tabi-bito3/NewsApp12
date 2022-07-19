@@ -19,7 +19,7 @@
         android:background="#020202"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toSt1artOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="User Profile"
         app:titleTextColor="#FFFFFF">
@@ -86,7 +86,7 @@
                 android:layout_marginTop="32dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Your User name is:  "
+                android:text="Your User name is : "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.511"
                 app:layout_constraintStart_toStartOf="parent"
