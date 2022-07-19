@@ -35,4 +35,5 @@
     <string name="posttitle">Add Title...</string>
     <string name="like">Like</string>
     <string name="dislike">Dislike</string>
+    <string name="save">Save</string>
 </resources>

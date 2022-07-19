@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -29,6 +31,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView postListView;
     private List<BlogPost> blog_list;
     private FirebaseFirestore firebaseFirestore;
+    private DatabaseReference mRef, postRef;
     private BlogRecyclerAdapter blogRecyclerAdapter;
 
     public HomeFragment() {
@@ -46,6 +49,9 @@ public class HomeFragment extends Fragment {
         blogRecyclerAdapter=new BlogRecyclerAdapter(blog_list);
         postListView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         postListView.setAdapter(blogRecyclerAdapter);
+
+        mRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        postRef = FirebaseDatabase.getInstance().getReference().child("Posts");
 
         firebaseFirestore= FirebaseFirestore.getInstance();
         firebaseFirestore.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {

@@ -1,6 +1,7 @@
 package com.example.newsapp;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.TimeZone;
 
 public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapter.ViewHolder> {
 
@@ -41,11 +45,21 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         String thumbImg = blog_list.get(position).getThumb_img();
         holder.setBlogImage(thumbImg);
+        String ago = "";
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        //sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        try {
+            long millisecond = blog_list.get(position).getTimestamp().getTime();
+            long now = System.currentTimeMillis();
+            ago = DateUtils.getRelativeTimeSpanString(millisecond, now, DateUtils.MINUTE_IN_MILLIS).toString();
+            String dateString = DateFormat.getDateInstance().format(millisecond).toString();
 
-        long millisecond = blog_list.get(position).getTimestamp().getTime();
-        String dateString = DateFormat.getDateInstance().format(millisecond).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        holder.setTime(dateString);
+        holder.setTime(ago);
+
     }
 
     @Override

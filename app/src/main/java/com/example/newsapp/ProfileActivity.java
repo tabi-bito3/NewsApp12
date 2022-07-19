@@ -53,7 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
         {
                     Glide.with(ProfileActivity.this)
                     .load(fb_User.getPhotoUrl())
-                    .into(iv_image); //hello hasita find me
+                    .into(iv_image);
 
             tv_name.setText("Hello "+fb_User.getDisplayName());
             tv_emailID.setText("Email ID: "+fb_User.getEmail());
