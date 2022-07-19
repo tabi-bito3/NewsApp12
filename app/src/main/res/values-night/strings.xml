@@ -7,4 +7,5 @@
     <string name="heading">Heading</string>
     <string name="post_description">post description</string>
     <string name="profile_image">profile image</string>
+    <string name="save">Save</string>
 </resources>

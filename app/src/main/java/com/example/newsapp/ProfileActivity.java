@@ -23,18 +23,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    ImageView iv_image;
+    //ImageView iv_image;
     TextView tv_name;
     TextView tv_emailID;
-    EditText ed_userName;
+    TextView user_name;
+
     Button bt_logout;
     FirebaseAuth fb_Auth;
     GoogleSignInClient gsc;
-    TextView ph;
-
+    Toolbar tb;
+    de.hdodenhof.circleimageview.CircleImageView round_profile;
+    private FirebaseFirestore firebaseFirestore;
 
 
     @Override
@@ -43,25 +47,38 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         //commit test
 
-        iv_image=findViewById(R.id.iv_image);
+        //iv_image=findViewById(R.id.iv_image);
         tv_name=findViewById(R.id.tv_name);
         tv_emailID=findViewById(R.id.tv_emailID);
-        ed_userName=findViewById(R.id.ed_userName);
+        user_name=findViewById(R.id.ed_userName);
+
         bt_logout=findViewById(R.id.bt_logout);
-        ph=findViewById(R.id.profile_heading);
+        tb=findViewById(R.id.profile_toolbar);
+        round_profile=findViewById(R.id.profile_pic);
 
         fb_Auth=FirebaseAuth.getInstance();
 
         FirebaseUser fb_User= fb_Auth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         if(fb_User != null)
         {
                     Glide.with(ProfileActivity.this)
                     .load(fb_User.getPhotoUrl())
-                    .into(iv_image); //hello hasita find me
+                    .into(round_profile);
 
             tv_name.setText("Hello "+fb_User.getDisplayName());
             tv_emailID.setText("Email ID: "+fb_User.getEmail());
+            firebaseFirestore.collection("Users").document(fb_User.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()) {
+                        String name = task.getResult().getString("username");
+
+                        user_name.setText("Your User ID is: "+name);
+                    }
+                }
+            });
         }
 
         gsc= GoogleSignIn.getClient(ProfileActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN);

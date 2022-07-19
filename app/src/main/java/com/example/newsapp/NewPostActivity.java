@@ -130,6 +130,7 @@ public class NewPostActivity extends AppCompatActivity {
                                     postMap.put("user_id", current_user_id);
                                     postMap.put("timestamp", FieldValue.serverTimestamp());
 
+
                                     firebaseFirestore.collection("Posts").add(postMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -151,6 +152,7 @@ public class NewPostActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            progressPost.setVisibility(View.INVISIBLE);
                             Log.w(TAG, "Error writing document", e);
                         }
                     });
