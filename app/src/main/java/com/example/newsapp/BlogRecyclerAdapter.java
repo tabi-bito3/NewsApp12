@@ -1,11 +1,11 @@
 package com.example.newsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,12 +27,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -82,7 +79,14 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
-
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Detailed_Activity.class);
+                intent.putExtra("post_id", blogPostId);
+                view.getContext().startActivity(intent);
+            }
+        });
 
         String desc_data = blog_list.get(position).getTitle();
         holder.setDescText(desc_data);
@@ -259,7 +263,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         }
 
         public void setUser(String name, String image){
-            username = mView.findViewById(R.id.username);
+            username = mView.findViewById(R.id.user_name);
             profileImg = mView.findViewById(R.id.profile_img);
 
             username.setText(name);

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Detailed_Activity">
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/post_img_desc"
+                android:layout_width="0dp"
+                android:layout_height="256dp"
+                android:contentDescription="@string/post_description"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_img_desc"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/profile_image"
+                android:src="@drawable/account_circle"
+                app:layout_constraintEnd_toStartOf="@+id/usernameDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_title_desc" />
+
+            <TextView
+                android:id="@+id/usernameDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/username"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/profile_img_desc"
+                app:layout_constraintTop_toBottomOf="@+id/post_title_desc" />
+
+            <TextView
+                android:id="@+id/post_date_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/post_date"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/profile_img_desc"
+                app:layout_constraintTop_toBottomOf="@+id/usernameDesc" />
+
+            <ImageButton
+                android:id="@+id/likeBtn_desc"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/primary"
+                android:contentDescription="@string/dislike"
+                android:minHeight="48dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/like_count_desc"
+                app:layout_constraintTop_toBottomOf="@+id/post_img_desc"
+                app:srcCompat="@drawable/thumb_up"
+                tools:ignore="ImageContrastCheck" />
+
+            <ImageButton
+                android:id="@+id/dislikeBtn_desc"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/like"
+                android:minHeight="48dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_img_desc"
+                app:srcCompat="@drawable/thumb_down"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/like_count_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/_0"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/dislikeBtn_desc"
+                app:layout_constraintTop_toBottomOf="@+id/post_img_desc" />
+
+            <TextView
+                android:id="@+id/post_title_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/heading"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_img_desc" />
+
+            <TextView
+                android:id="@+id/detailed_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/post_desc_hint"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_img_desc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
