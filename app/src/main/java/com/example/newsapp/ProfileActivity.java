@@ -83,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-            tv_name.setText("Hello "+fb_User.getDisplayName());
+            tv_name.setText("Name : "+fb_User.getDisplayName());
             tv_emailID.setText("Email ID: "+fb_User.getEmail());
 
             firebaseFirestore.collection("Users").document(fb_User.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -92,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if(task.isSuccessful()) {
                         String name = task.getResult().getString("username");
 
-                        user_name.setText("Your User ID is: "+name);
+                        user_name.setText("Hello, "+name+"!");
                     }
                 }
             });
