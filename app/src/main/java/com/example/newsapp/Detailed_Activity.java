@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,7 +62,7 @@ public class Detailed_Activity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     String title = task.getResult().getString("title");
                     String thumb = task.getResult().getString("thumb_img");
-                    String timestamp = task.getResult().getString("timestamp");
+                    Timestamp timestamp = task.getResult().getTimestamp("timestamp");
                     String desc = task.getResult().getString("desc");
 
                     titleView.setText(title);

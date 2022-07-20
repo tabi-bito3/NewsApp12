@@ -79,15 +79,6 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Detailed_Activity.class);
-                intent.putExtra("post_id", blogPostId);
-                view.getContext().startActivity(intent);
-            }
-        });
-
         String desc_data = blog_list.get(position).getTitle();
         holder.setDescText(desc_data);
 
@@ -105,6 +96,15 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         }
 
         holder.setTime(ago);
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Detailed_Activity.class);
+                intent.putExtra("post_id", blogPostId);
+                view.getContext().startActivity(intent);
+            }
+        });
 
         // Get Likes & Dislikes Count
         firebaseFirestore.collection("Posts/" + blogPostId +"/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -263,7 +263,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         }
 
         public void setUser(String name, String image){
-            username = mView.findViewById(R.id.user_name);
+            username = mView.findViewById(R.id.username);
             profileImg = mView.findViewById(R.id.profile_img);
 
             username.setText(name);
