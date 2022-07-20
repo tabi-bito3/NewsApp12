@@ -63,39 +63,32 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(fb_User != null)
         {
-                   if(round_profile!=null)
-                   {
-                       firebaseFirestore.collection("Users").document(fb_User.getPhotoUrl().toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                           @Override
-                           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                               if(task.isSuccessful()) {
-                                   String image = task.getResult().getString("profile_img");
-                               }
+               firebaseFirestore.collection("Users").document(fb_User.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                   @Override
+                   public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                       if(task.isSuccessful()) {
+                           String image = task.getResult().getString("profile_img");
+                           if(image!=null){
+                               Glide.with(ProfileActivity.this)
+                                       .load(image)
+                                       .into(round_profile);
                            }
-                       });
+                           else{
+                               Glide.with(ProfileActivity.this)
+                                       .load(fb_User.getPhotoUrl())
+                                       .into(round_profile);
+                           }
+
+                           String name = task.getResult().getString("username");
+
+                           user_name.setText("Hello, "+name+"!");
+
+                       }
                    }
-
-                   else{
-                       Glide.with(ProfileActivity.this)
-                               .load(fb_User.getPhotoUrl())
-                               .into(round_profile);
-                   }
-
-
+               });
 
             tv_name.setText("Name : "+fb_User.getDisplayName());
             tv_emailID.setText("Email ID: "+fb_User.getEmail());
-
-            firebaseFirestore.collection("Users").document(fb_User.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if(task.isSuccessful()) {
-                        String name = task.getResult().getString("username");
-
-                        user_name.setText("Hello, "+name+"!");
-                    }
-                }
-            });
         }
 
         gsc= GoogleSignIn.getClient(ProfileActivity.this, GoogleSignInOptions.DEFAULT_SIGN_IN);
