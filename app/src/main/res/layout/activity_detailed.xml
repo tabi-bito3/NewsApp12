@@ -61,7 +61,7 @@
                 app:layout_constraintStart_toEndOf="@+id/profile_img_desc"
                 app:layout_constraintTop_toBottomOf="@+id/usernameDesc" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/likeBtn_desc"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
@@ -76,7 +76,7 @@
                 app:srcCompat="@drawable/thumb_up"
                 tools:ignore="ImageContrastCheck" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/dislikeBtn_desc"
                 android:layout_width="48dp"
                 android:layout_height="48dp"

@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     private void toPostActivity() {
         Intent intent= new Intent(MainActivity.this,NewPostActivity.class);
         startActivity(intent);
-        finish();
     }
 
     @Override
@@ -142,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
     private void sendToProfile(){
         Intent intent= new Intent(MainActivity.this,ProfileActivity.class);
         startActivity(intent);
-        finish();
     }
 
     private void sendToLogin() {

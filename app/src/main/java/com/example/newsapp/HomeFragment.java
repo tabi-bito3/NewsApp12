@@ -19,6 +19,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -45,7 +46,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         blog_list=new ArrayList<>();
-        // postListView=view.findViewById(R.id.blog_list_view);
         // Inflate the layout for this fragment
         postListView = view.findViewById(R.id.post_list_view);
         blogRecyclerAdapter=new BlogRecyclerAdapter(blog_list);
@@ -59,7 +59,10 @@ public class HomeFragment extends Fragment {
         if(mAuth.getCurrentUser()!=null) {
 
             firebaseFirestore = FirebaseFirestore.getInstance();
-            firebaseFirestore.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+            Query orderQuery = firebaseFirestore.collection("Posts").orderBy("timestamp", com.google.firebase.firestore.Query.Direction.DESCENDING);
+
+            orderQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(QuerySnapshot DocumentSnapshots, FirebaseFirestoreException error) {
                     for (DocumentChange doc : DocumentSnapshots.getDocumentChanges()) {
